@@ -185,6 +185,44 @@
     border-radius: 50%;
     box-shadow: 0 0 8px var(--green);
   }
+  .brand-lockup a.crew,
+  .brand-lockup a.levels {
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s, color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .brand-lockup a.crew:hover { opacity: 0.78; }
+  .brand-lockup a.levels:hover { opacity: 0.78; transform: translateY(-1px); }
+  .crew-portal-sample {
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    background: rgba(212,168,104,0.05);
+    border-left: 2px solid var(--green, #c9a961);
+    border-radius: 3px;
+    font-size: 0.9rem;
+    color: var(--text-mute, #b8b3a3);
+    line-height: 1.55;
+  }
+  .crew-portal-sample .sample-tag {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--green, #c9a961);
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+  }
+  .crew-portal-sample code {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: rgba(212,168,104,0.12);
+    color: var(--text, #f0ead8);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 0.88em;
+    border: 1px solid rgba(212,168,104,0.25);
+    user-select: all;
+  }
+
 
   .header-cta {
     font-family: var(--f-body);
@@ -1661,9 +1699,9 @@
 <header class="site-header" id="header">
   <div class="brand-lockup">
     <span class="ornament">✦</span>
-    <span class="crew">HYBRID CREW</span>
+    <a class="crew" href="https://dsingson5.github.io/hybrid-crew/" target="_blank" rel="noopener" aria-label="Hybrid Crew training portal">HYBRID CREW</a>
     <span class="x">×</span>
-    <span class="levels">LEVELS</span>
+    <a class="levels" href="https://www.instagram.com/levels_scl/?g=5" target="_blank" rel="noopener" aria-label="Levels Strength & Conditioning on Instagram">LEVELS</a>
   </div>
   <a href="#book" class="header-cta">Book a session</a>
 </header>
@@ -2298,6 +2336,9 @@
     <div class="crew-portal-title">Access your <span class="italic">training schedule.</span></div>
     <div class="crew-portal-desc">
       Already coaching with David? Enter the Hybrid Crew portal for your weekly programming, workouts, and progress logs.
+    </div>
+    <div class="crew-portal-sample">
+      <span class="sample-tag">✦ Sample</span>Curious what the coaching looks like? Enter <code>LevelsHyroxPT-sample</code> at the Hybrid Crew password box to preview a sample week.
     </div>
   </div>
   <a href="https://dsingson5.github.io/hybrid-crew/enter.html" target="_blank" rel="noopener" class="crew-portal-btn">
