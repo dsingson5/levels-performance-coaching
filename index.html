@@ -986,7 +986,7 @@
     overflow: hidden;
     transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .service.open .service-body { max-height: 800px; }
+  .service.open .service-body { max-height: 3200px; }
 
   .service-inner {
     padding-top: 2.5rem;
@@ -1236,28 +1236,52 @@
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
-  .pkg-price {
+  /* Per-session is the PRIMARY display (large) */
+  .pkg-per {
     font-family: var(--f-display);
-    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
     line-height: 1;
     color: var(--text);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.6rem;
+    word-spacing: -0.04em;
   }
-  .pkg-price .currency {
-    font-size: 0.45em;
-    color: var(--green);
-    margin-right: 0.15em;
-    vertical-align: top;
-    line-height: 1.2;
-    display: inline-block;
-  }
-  .pkg-per {
+  .pkg-per .per-suffix {
     font-family: var(--f-serif);
     font-style: italic;
     color: var(--green);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 0.32em;
+    letter-spacing: 0.04em;
+    margin-left: 0.4em;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  /* Total is the SECONDARY display (small) */
+  .pkg-price {
+    font-family: var(--f-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    line-height: 1.4;
+    color: var(--text-mute);
+    margin-bottom: 1.8rem;
+    text-transform: uppercase;
+  }
+  .pkg-price .total-label {
+    color: var(--text-faint);
+    margin-right: 0.5em;
+  }
+  .pkg-price .currency {
+    font-size: 1em;
+    color: var(--green);
+    margin-right: 0.1em;
+    font-weight: 500;
+  }
+  .pkg-price #pkgPrice,
+  .pkg-price #runPkgPrice,
+  .pkg-price #scPkgPrice {
+    color: var(--text);
+    font-weight: 500;
+    font-size: 1.05em;
   }
   .pkg-savings {
     font-family: var(--f-mono);
@@ -1679,6 +1703,150 @@
     .crew-portal-btn { padding: 0.85rem 1.4rem; font-size: 0.8rem; }
     footer { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
   }
+
+  /* ===================== SIM TIERS (consolidated sim card) ===================== */
+  .sim-tier {
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: rgba(163, 204, 46, 0.03);
+  }
+  .sim-tier-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .sim-tier-name {
+    font-family: var(--f-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    color: var(--text);
+  }
+  .sim-tier-price {
+    font-family: var(--f-mono);
+    font-size: 0.95rem;
+    color: var(--green);
+    font-weight: 500;
+  }
+  .sim-tier p {
+    color: var(--text-mute);
+    font-size: 0.92rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.55;
+  }
+  .sim-tier .service-features {
+    margin-top: 0.4rem;
+  }
+  .sim-tier .service-features li {
+    font-size: 0.88rem;
+  }
+
+  /* ===================== CYCLE-CENTRIC FEMININE PALETTE ===================== */
+  :root {
+    --rose: #E8B4C8;
+    --rose-glow: #F5C6D6;
+    --rose-deep: #C88AA0;
+    --blush: #F7E1E9;
+    --rose-faint: rgba(232, 180, 200, 0.08);
+    --rose-shadow: rgba(232, 180, 200, 0.3);
+    --plum: #8B5A6F;
+  }
+
+  #cycle {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(232, 180, 200, 0.07), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(232, 180, 200, 0.045), transparent 55%),
+      linear-gradient(180deg, rgba(247, 225, 233, 0.025), transparent 30%);
+  }
+  #cycle::before {
+    content: '❀';
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    font-family: var(--f-serif);
+    font-style: italic;
+    color: var(--rose);
+    font-size: 2.4rem;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 1;
+  }
+  #cycle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose), transparent);
+    opacity: 0.45;
+  }
+  #cycle > * { position: relative; z-index: 2; }
+
+  #cycle .section-num {
+    color: var(--rose);
+    letter-spacing: 0.32em;
+  }
+  #cycle .section-title .italic {
+    color: var(--rose-glow);
+    font-style: italic;
+  }
+  #cycle .section-aside {
+    color: var(--text-mute);
+  }
+
+  #cycle .coach-role {
+    color: var(--rose);
+    font-family: var(--f-serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    text-transform: none;
+  }
+
+  #cycle .coach-bio {
+    border-left: 1px solid rgba(232, 180, 200, 0.18);
+    padding-left: 1.5rem;
+  }
+
+  #cycle .cred {
+    border-color: rgba(232, 180, 200, 0.14);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  #cycle .cred:hover {
+    background: rgba(232, 180, 200, 0.05);
+    border-color: var(--rose);
+  }
+  #cycle .cred-num { color: var(--rose); }
+  #cycle .cred-title { color: var(--blush); }
+  #cycle .cred-sub { color: var(--text-mute); }
+
+  #cycle .method {
+    border-color: rgba(232, 180, 200, 0.16);
+    background: linear-gradient(180deg, rgba(232, 180, 200, 0.045), transparent);
+  }
+  #cycle .method-label { color: var(--rose); }
+  #cycle .method-title { color: var(--blush); font-family: var(--f-serif); font-style: italic; }
+  #cycle .method-stats .v { color: var(--rose-glow); }
+  #cycle .method-stats .l { color: var(--text-mute); }
+
+  #cycle .service-features li::before { color: var(--rose); }
+  #cycle .coach-body strong { color: var(--rose-glow); }
+  #cycle em { color: var(--rose-glow); font-style: italic; }
+
+  /* Soft serif accent for the in-practice phase headings */
+  #cycle .coach-body strong {
+    font-family: var(--f-body);
+    font-weight: 600;
+  }
+
 </style>
 </head>
 <body>
@@ -2014,35 +2182,76 @@
 
   <div class="services-list reveal-stagger">
 
-    <!-- Service 1 -->
+    <!-- Service 1: All Hyrox race simulations (Solo / Doubles / Relay) -->
     <div class="service" data-service>
       <div class="service-head">
         <div class="service-no">— 01 —</div>
-        <div class="service-title">Hyrox Full <span class="italic">Simulation</span></div>
-        <div class="service-price"><span class="currency">₱</span>3,500</div>
+        <div class="service-title">Hyrox <span class="italic">Full Simulation</span></div>
+        <div class="service-price"><span class="currency">₱</span>1,500&ndash;3,500<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ person</span></div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
         <div class="service-inner">
           <div>
             <p class="service-desc">
-              Live coaching through the complete 8.7 km + 8 stations — the closest thing to race day before race day.
-              One day. One athlete. Full debrief.
+              The full 8.7 km + 8 stations, coached live &mdash; race day before race day.
+              Three formats depending on whether you are racing Solo, as a Doubles pair, or as a 4-person Relay team.
             </p>
-            <ul class="service-features">
-              <li>Live run pacing strategy for each segment</li>
-              <li>Nutrition & hydration plan</li>
-              <li>Per-station regulation & technique calls</li>
-              <li>Mental performance coaching mid-race</li>
-              <li>Warm-up & activation protocol</li>
-              <li>Post-simulation analysis & metrics debrief</li>
-              <li>Heart rate, power, pace interpretation</li>
-            </ul>
+
+            <!-- Solo -->
+            <div class="sim-tier">
+              <div class="sim-tier-head">
+                <span class="sim-tier-name">Solo &middot; Open / Pro</span>
+                <span class="sim-tier-price">&#8369;3,500 / person</span>
+              </div>
+              <p>Full race coached one-on-one. Men's / Women's Open or Pro division standards.</p>
+              <ul class="service-features">
+                <li>Live run pacing strategy for each segment</li>
+                <li>Per-station regulation, technique &amp; equipment calls</li>
+                <li>Nutrition &amp; hydration plan</li>
+                <li>Warm-up &amp; activation protocol</li>
+                <li>Mental performance coaching mid-race</li>
+                <li>Post-sim metrics debrief (HR, pace, power)</li>
+              </ul>
+            </div>
+
+            <!-- Doubles -->
+            <div class="sim-tier">
+              <div class="sim-tier-head">
+                <span class="sim-tier-name">Doubles &middot; Team of 2</span>
+                <span class="sim-tier-price">&#8369;2,500 / person</span>
+              </div>
+              <p>Same full race as a team of two. Built for partners prepping a Doubles category at Hyrox Bangkok, Singapore, or Manila.</p>
+              <ul class="service-features">
+                <li>Live exchange strategy on every station (work share + handoffs)</li>
+                <li>Pacing plan calibrated to the slower partner's threshold</li>
+                <li>Nutrition + hydration plan for both athletes</li>
+                <li>Warm-up + activation as a pair</li>
+                <li>Post-sim debrief: combined splits, individual splits, exchanges</li>
+              </ul>
+            </div>
+
+            <!-- Relay -->
+            <div class="sim-tier">
+              <div class="sim-tier-head">
+                <span class="sim-tier-name">Relay &middot; Team of 4</span>
+                <span class="sim-tier-price">&#8369;1,500 / person &middot; &#8369;6,000 total</span>
+              </div>
+              <p>Full simulation as a 4-person relay &mdash; each athlete owning a quarter of the race. Great for crews, team building, or race rehearsal.</p>
+              <ul class="service-features">
+                <li>Relay order optimization based on each athlete's strength profile</li>
+                <li>Per-leg pacing strategy (2 stations + run intervals per leg)</li>
+                <li>Live handoff coaching + transition zone protocol</li>
+                <li>Team warm-up + activation</li>
+                <li>Post-sim debrief: team splits, individual leg splits, handoffs</li>
+              </ul>
+            </div>
           </div>
           <div class="service-meta">
-            <div class="service-meta-label">— DELIVERABLE</div>
+            <div class="service-meta-label">&mdash; DELIVERABLE</div>
             <div class="service-meta-content">
-              Written pacing strategy document + post-sim metrics report + recommended next-block training focus.
+              Every athlete gets a written pacing strategy + post-sim metrics report.
+              Bring your own crew or join a scheduled sim day at Levels Sta. Cruz.
             </div>
           </div>
         </div>
@@ -2054,7 +2263,7 @@
       <div class="service-head">
         <div class="service-no">— 02 —</div>
         <div class="service-title">1-on-1 <span class="italic">Performance Coaching</span></div>
-        <div class="service-price"><span class="currency">₱</span>1,500<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ session</span></div>
+        <div class="service-price">From <span class="currency">₱</span>6,800<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ 4-session block</span></div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2076,10 +2285,11 @@
           <div class="service-meta">
             <div class="service-meta-label">— SEE PACKAGES BELOW</div>
             <div class="service-meta-content">
-              Single sessions are the entry point. Most athletes find their stride on the 10- or 20-session blocks.
+              Available exclusively as a block: 4, 10, 20, or 30 sessions.
+              Most athletes find their stride on the 10- or 20-session blocks.
               Serious race prep lives in the 30-session program.
               <br/><br/>
-              <a href="#packages" class="service-meta-link">View packages &amp; pricing</a>
+              <a href="#packages" class="service-meta-link">View Hyrox packages &amp; pricing</a>
             </div>
           </div>
         </div>
@@ -2091,7 +2301,7 @@
       <div class="service-head">
         <div class="service-no">— 03 —</div>
         <div class="service-title">Running <span class="italic">Coaching</span></div>
-        <div class="service-price"><span class="currency">₱</span>1,200<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ session</span></div>
+        <div class="service-price">From <span class="currency">₱</span>4,400<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ 4-session block</span></div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2111,9 +2321,12 @@
             </ul>
           </div>
           <div class="service-meta">
-            <div class="service-meta-label">— BEST FOR</div>
+            <div class="service-meta-label">— SEE RUN PACKAGES BELOW</div>
             <div class="service-meta-content">
-              Athletes chasing a sub-2 half, first marathon, or trying to fix a Hyrox run that falls apart after station 4.
+              Best for athletes chasing a sub-2 half, first marathon, or trying to fix a Hyrox run that falls apart after station 4.
+              Available exclusively as a block: 4, 10, 20, or 30 sessions.
+              <br/><br/>
+              <a href="#run-packages" class="service-meta-link">View run packages &amp; pricing</a>
             </div>
           </div>
         </div>
@@ -2125,7 +2338,7 @@
       <div class="service-head">
         <div class="service-no">— 04 —</div>
         <div class="service-title">Hybrid <span class="italic">Strength & Conditioning</span></div>
-        <div class="service-price"><span class="currency">₱</span>1,500<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ session</span></div>
+        <div class="service-price">From <span class="currency">₱</span>6,800<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ 4-session block</span></div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2147,10 +2360,13 @@
             </ul>
           </div>
           <div class="service-meta">
-            <div class="service-meta-label">— STRUCTURE</div>
+            <div class="service-meta-label">— SEE S&amp;C PACKAGES BELOW</div>
             <div class="service-meta-content">
-              Mesocycles run 6–12 weeks with primary, secondary, and tertiary goals shifting by season.
+              Mesocycles run 6&ndash;12 weeks with primary, secondary, and tertiary goals shifting by season.
               Built to ramp into Hyrox season and peak for major races.
+              Available exclusively as a block: 4, 10, 20, or 30 sessions.
+              <br/><br/>
+              <a href="#sc-packages" class="service-meta-link">View S&amp;C packages &amp; pricing</a>
             </div>
           </div>
         </div>
@@ -2162,7 +2378,7 @@
       <div class="service-head">
         <div class="service-no">— 05 —</div>
         <div class="service-title">Lactate <span class="italic">Threshold Testing</span></div>
-        <div class="service-price"><span class="currency">₱</span>2,500</div>
+        <div class="service-price"><span class="currency">₱</span>4,500<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ person</span></div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2193,22 +2409,21 @@
   </div>
 </section>
 
-<!-- PACKAGES -->
+<!-- PACKAGES (HYROX 1-ON-1) -->
 <section class="section-pad packages" id="packages">
   <div class="section-head reveal">
     <div>
-      <div class="section-num">04 — PACKAGES</div>
+      <div class="section-num">04 — HYROX PACKAGES</div>
       <h2 class="section-title">Choose your <span class="italic">commitment.</span></h2>
     </div>
     <p class="section-aside">
-      Every block bundles programming, sims, and add-ons that would cost more à la carte.
+      For 1-on-1 Hyrox Performance Coaching. Every block bundles programming, sims, and add-ons that would cost more à la carte.
       Compare the total value against your price.
     </p>
   </div>
 
   <div class="pkg-selector reveal">
-    <button class="pkg-tab active" data-pkg="single">Single Session</button>
-    <button class="pkg-tab" data-pkg="starter">4 · Starter</button>
+    <button class="pkg-tab active" data-pkg="starter">4 · Starter</button>
     <button class="pkg-tab" data-pkg="foundation">10 · Foundation</button>
     <button class="pkg-tab" data-pkg="engine">20 · Engine</button>
     <button class="pkg-tab" data-pkg="full">30 · Full</button>
@@ -2216,27 +2431,27 @@
 
   <div class="pkg-display reveal">
     <div class="pkg-content" id="pkgContent">
-      <div class="pkg-name" id="pkgName">— SINGLE SESSION</div>
-      <div class="pkg-headline" id="pkgHeadline">Try the<br/><span class="italic">methodology.</span></div>
+      <div class="pkg-name" id="pkgName">&mdash; 4-SESSION STARTER</div>
+      <div class="pkg-headline" id="pkgHeadline">For the<br/><span class="italic">beginner.</span></div>
       <div class="pkg-desc" id="pkgDesc">
-        For first-time athletes who want to test the coaching fit before committing to a block.
-        One session, full attention, no commitment.
+        Designed for first-time athletes. Learn the fundamentals &mdash; pacing, breathing, station technique &mdash;
+        without committing to a long block. Programming included.
       </div>
 
-      <div class="pkg-value-stack" id="pkgValueStack" style="display:none;">
-        <div class="pkg-value-row" id="pkgValueLine1"><span>Sessions value</span><span class="val">—</span></div>
-        <div class="pkg-value-row" id="pkgValueLine2" style="display:none;"><span>Included extras</span><span class="val">—</span></div>
-        <div class="pkg-value-row" id="pkgValueLine3" style="display:none;"><span>Included extras</span><span class="val">—</span></div>
-        <div class="pkg-value-row total"><span>Total value</span><span class="val" id="pkgValueTotal">—</span></div>
-        <div class="pkg-value-row your-price"><span>Your price</span><span class="val" id="pkgValuePrice">—</span></div>
-        <div class="pkg-bargain-badge" id="pkgBargain">Save <span class="currency">₱</span><span id="pkgBargainAmount">0</span></div>
+      <div class="pkg-value-stack" id="pkgValueStack" style="display:block;">
+        <div class="pkg-value-row" id="pkgValueLine1" style="display:flex;"><span>4 sessions at base rate</span><span class="val">&#8369;7,200</span></div>
+        <div class="pkg-value-row" id="pkgValueLine2" style="display:flex;"><span>Personalized 2-week program</span><span class="val">&#8369;1,500</span></div>
+        <div class="pkg-value-row" id="pkgValueLine3" style="display:flex;"><span>Onboarding assessment</span><span class="val">&#8369;1,000</span></div>
+        <div class="pkg-value-row total"><span>Total value</span><span class="val" id="pkgValueTotal">&#8369;9,700</span></div>
+        <div class="pkg-value-row your-price"><span>Your price</span><span class="val" id="pkgValuePrice">&#8369;6,800</span></div>
+        <div class="pkg-bargain-badge" id="pkgBargain">Save <span class="currency">&#8369;</span><span id="pkgBargainAmount">2,900</span></div>
       </div>
     </div>
     <div class="pkg-price-side pkg-content" id="pkgPriceSide">
-      <div class="pkg-sessions" id="pkgSessions">1 SESSION</div>
-      <div class="pkg-price"><span class="currency">₱</span><span id="pkgPrice">1,500</span></div>
-      <div class="pkg-per" id="pkgPer">₱1,500 / session</div>
-      <div class="pkg-savings" id="pkgSavings" style="visibility:hidden">— BASE RATE</div>
+      <div class="pkg-sessions" id="pkgSessions">4 SESSIONS &middot; ~2 WEEKS</div>
+      <div class="pkg-per" id="pkgPer">&#8369;1,700<span class="per-suffix">/ session</span></div>
+      <div class="pkg-price"><span class="total-label">Total</span><span class="currency">&#8369;</span><span id="pkgPrice">6,800</span></div>
+      <div class="pkg-savings" id="pkgSavings" style="visibility:hidden">&mdash;</div>
     </div>
     <div class="pkg-includes">
       <span class="item">In-person at Levels Sta. Cruz</span>
@@ -2247,11 +2462,263 @@
   </div>
 </section>
 
+<!-- RUNNING PACKAGES -->
+<section class="section-pad packages" id="run-packages">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-num">04B — RUNNING PACKAGES</div>
+      <h2 class="section-title">Run with <span class="italic">structure.</span></h2>
+    </div>
+    <p class="section-aside">
+      For Running Coaching — half-marathon, marathon, trail, or fixing the Hyrox run.
+      Same polarized 80/20 logic. Pace anchored to actual lactate thresholds, not generic Garmin zones.
+    </p>
+  </div>
+
+  <div class="pkg-selector reveal">
+    <button class="pkg-tab active" data-runpkg="starter">4 · Run Starter</button>
+    <button class="pkg-tab" data-runpkg="foundation">10 · Run Foundation</button>
+    <button class="pkg-tab" data-runpkg="engine">20 · Run Engine</button>
+    <button class="pkg-tab" data-runpkg="full">30 · Run Full</button>
+  </div>
+
+  <div class="pkg-display reveal">
+    <div class="pkg-content" id="runPkgContent">
+      <div class="pkg-name" id="runPkgName">&mdash; 4-SESSION RUN STARTER</div>
+      <div class="pkg-headline" id="runPkgHeadline">Start with<br/><span class="italic">structure.</span></div>
+      <div class="pkg-desc" id="runPkgDesc">
+        For new runners or returning athletes. Gait audit, cadence work, polarized 80/20 weekly plan, and a 2-week structured block of run sessions.
+      </div>
+
+      <div class="pkg-value-stack" id="runPkgValueStack" style="display:block;">
+        <div class="pkg-value-row" id="runPkgValueLine1" style="display:flex;"><span>4 sessions at base rate</span><span class="val">&#8369;4,800</span></div>
+        <div class="pkg-value-row" id="runPkgValueLine2" style="display:flex;"><span>Gait + cadence video analysis</span><span class="val">&#8369;1,200</span></div>
+        <div class="pkg-value-row" id="runPkgValueLine3" style="display:flex;"><span>Personalized 2-week run plan</span><span class="val">&#8369;1,000</span></div>
+        <div class="pkg-value-row total"><span>Total value</span><span class="val" id="runPkgValueTotal">&#8369;7,000</span></div>
+        <div class="pkg-value-row your-price"><span>Your price</span><span class="val" id="runPkgValuePrice">&#8369;4,400</span></div>
+        <div class="pkg-bargain-badge" id="runPkgBargain">Save <span class="currency">&#8369;</span><span id="runPkgBargainAmount">2,600</span></div>
+      </div>
+    </div>
+    <div class="pkg-price-side pkg-content" id="runPkgPriceSide">
+      <div class="pkg-sessions" id="runPkgSessions">4 SESSIONS &middot; ~2 WEEKS</div>
+      <div class="pkg-per" id="runPkgPer">&#8369;1,100<span class="per-suffix">/ session</span></div>
+      <div class="pkg-price"><span class="total-label">Total</span><span class="currency">&#8369;</span><span id="runPkgPrice">4,400</span></div>
+      <div class="pkg-savings" id="runPkgSavings" style="visibility:hidden">&mdash;</div>
+    </div>
+    <div class="pkg-includes">
+      <span class="item">In-person or remote run sessions</span>
+      <span class="item">Written periodized plan</span>
+      <span class="item">Garmin / Whoop / Stryd review</span>
+      <span class="item">Race-week taper protocol</span>
+    </div>
+  </div>
+</section>
+
+<!-- HYBRID S&C PACKAGES -->
+<section class="section-pad packages" id="sc-packages">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-num">04C &mdash; S&amp;C PACKAGES</div>
+      <h2 class="section-title">Build the <span class="italic">engine.</span></h2>
+    </div>
+    <p class="section-aside">
+      For Hybrid Strength &amp; Conditioning. Periodized blocks so strength and endurance develop together,
+      with neither stealing from the other. Anchored to a 6&ndash;12 week mesocycle plan.
+    </p>
+  </div>
+
+  <div class="pkg-selector reveal">
+    <button class="pkg-tab active" data-scpkg="starter">4 &middot; S&amp;C Starter</button>
+    <button class="pkg-tab" data-scpkg="foundation">10 &middot; S&amp;C Foundation</button>
+    <button class="pkg-tab" data-scpkg="engine">20 &middot; S&amp;C Engine</button>
+    <button class="pkg-tab" data-scpkg="full">30 &middot; S&amp;C Full</button>
+  </div>
+
+  <div class="pkg-display reveal">
+    <div class="pkg-content" id="scPkgContent">
+      <div class="pkg-name" id="scPkgName">&mdash; 4-SESSION S&amp;C STARTER</div>
+      <div class="pkg-headline" id="scPkgHeadline">Start with the<br/><span class="italic">movement.</span></div>
+      <div class="pkg-desc" id="scPkgDesc">
+        Movement screen, primary-lift technique work, and a 2-week S&amp;C block. For athletes new to structured strength training, or returning after a layoff.
+      </div>
+
+      <div class="pkg-value-stack" id="scPkgValueStack" style="display:block;">
+        <div class="pkg-value-row" id="scPkgValueLine1" style="display:flex;"><span>4 sessions at base rate</span><span class="val">&#8369;7,200</span></div>
+        <div class="pkg-value-row" id="scPkgValueLine2" style="display:flex;"><span>Movement screen + lift technique audit</span><span class="val">&#8369;1,500</span></div>
+        <div class="pkg-value-row" id="scPkgValueLine3" style="display:flex;"><span>Personalized 2-week program</span><span class="val">&#8369;1,000</span></div>
+        <div class="pkg-value-row total"><span>Total value</span><span class="val" id="scPkgValueTotal">&#8369;9,700</span></div>
+        <div class="pkg-value-row your-price"><span>Your price</span><span class="val" id="scPkgValuePrice">&#8369;6,800</span></div>
+        <div class="pkg-bargain-badge" id="scPkgBargain">Save <span class="currency">&#8369;</span><span id="scPkgBargainAmount">2,900</span></div>
+      </div>
+    </div>
+    <div class="pkg-price-side pkg-content" id="scPkgPriceSide">
+      <div class="pkg-sessions" id="scPkgSessions">4 SESSIONS &middot; ~2 WEEKS</div>
+      <div class="pkg-per" id="scPkgPer">&#8369;1,700<span class="per-suffix">/ session</span></div>
+      <div class="pkg-price"><span class="total-label">Total</span><span class="currency">&#8369;</span><span id="scPkgPrice">6,800</span></div>
+      <div class="pkg-savings" id="scPkgSavings" style="visibility:hidden">&mdash;</div>
+    </div>
+    <div class="pkg-includes">
+      <span class="item">In-person at Levels Sta. Cruz</span>
+      <span class="item">Periodized written program</span>
+      <span class="item">Bar-speed + RPE auto-regulation</span>
+      <span class="item">Hyrox / DEKA race-day taper</span>
+    </div>
+  </div>
+</section>
+
+<!-- CYCLE-CENTRIC TRAINING (FEMALE ATHLETES) -->
+<section class="section-pad coach" id="cycle">
+  <div class="section-head reveal">
+    <div>
+      <div class="section-num">05 — CYCLE-CENTRIC TRAINING</div>
+      <h2 class="section-title">Train with your <span class="italic">physiology</span> — not against it.</h2>
+    </div>
+    <p class="section-aside">
+      For female athletes who want their training synced to their menstrual cycle.
+      Programming written around your hormonal phases, with intensity and volume calibrated to where you actually are
+      that week — not a generic 7-day repeat.
+    </p>
+  </div>
+
+  <div class="coach-grid">
+    <div class="coach-bio reveal">
+      <div class="coach-role" style="margin-bottom:1rem;">Why cycle-syncing matters</div>
+      <p class="coach-body">
+        The menstrual cycle is a hormonal environment shift every athlete with one moves through every month —
+        and it changes how the body responds to training. Estrogen and progesterone modulate
+        <strong>substrate utilization, core temperature, recovery rate, ligamentous laxity, and central drive.</strong>
+        Ignoring this is not equality — it is a missed signal.
+      </p>
+      <p class="coach-body">
+        We do not program around stereotypes. We program around <strong>your</strong> cycle, tracked over 2–3 months,
+        cross-referenced with your HRV, RHR, sleep, and session RPE.
+        The goal: protect adaptation when your body is primed for it, and stop trying to PR in a week your physiology is already taxed.
+      </p>
+      <p class="coach-body">
+        <strong>Built on the same data-led foundation as the rest of the methodology</strong> — Seiler's polarized 80/20,
+        San Millan's lactate-anchored zones, and Weersma's hybrid programming principles.
+        Cycle-syncing is the resolution layer, not a replacement for the framework.
+      </p>
+    </div>
+
+    <div class="credentials reveal-stagger">
+      <div class="cred">
+        <div class="cred-num">01</div>
+        <div class="cred-title">Menstrual</div>
+        <div class="cred-sub">Days 1–5 · Hormones low</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num">02</div>
+        <div class="cred-title">Follicular</div>
+        <div class="cred-sub">Days 6–13 · Estrogen rising</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num">03</div>
+        <div class="cred-title">Ovulatory</div>
+        <div class="cred-sub">Days 14–16 · Estrogen peak</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num">04</div>
+        <div class="cred-title">Early Luteal</div>
+        <div class="cred-sub">Days 17–22 · Progesterone rising</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num">05</div>
+        <div class="cred-title">Late Luteal</div>
+        <div class="cred-sub">Days 23–28 · PMS window</div>
+      </div>
+      <div class="cred">
+        <div class="cred-num">06</div>
+        <div class="cred-title">N = 1</div>
+        <div class="cred-sub">Your data &gt; generic chart</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="method reveal">
+    <div class="method-label">— PROGRAMMING BY PHASE</div>
+    <div class="method-title">
+      Every phase has a physiological signature. Programming respects it — heavy lifting and threshold work concentrated
+      where the hormonal environment is primed for adaptation, Zone 2 and technique work emphasized when fatigue tolerance is lower.
+    </div>
+    <div class="method-stats">
+      <div class="ms-item">
+        <div class="v">HIGH</div>
+        <div class="l">Follicular: PR attempts, threshold, VO₂ max</div>
+      </div>
+      <div class="ms-item">
+        <div class="v">PEAK</div>
+        <div class="l">Ovulatory: race sims, top-end intensity</div>
+      </div>
+      <div class="ms-item">
+        <div class="v">Z2</div>
+        <div class="l">Luteal: aerobic base, fat oxidation, technique</div>
+      </div>
+      <div class="ms-item">
+        <div class="v">DELOAD</div>
+        <div class="l">Late luteal / menstrual: optional offload week</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="coach-grid" style="margin-top:3rem;">
+    <div class="coach-bio reveal">
+      <div class="coach-role" style="margin-bottom:1rem;">What this looks like in practice</div>
+      <p class="coach-body">
+        <strong>Follicular phase (days 6–13):</strong> Rising estrogen improves insulin sensitivity, recovery, and pain tolerance.
+        This is when we schedule the heaviest strength loads, threshold intervals, and lactate-anchored VO₂ work.
+        Bodies respond better to high-CHO fueling here — performance nutrition is timed to match.
+      </p>
+      <p class="coach-body">
+        <strong>Ovulatory window (days 14–16):</strong> Peak estrogen often produces peak power output and a small drop in perceived effort.
+        Race simulations, time trials, and 1RM attempts ideally land here. Caveat: relaxin elevates,
+        so we are sharp on landing mechanics and lifting technique to protect joints.
+      </p>
+      <p class="coach-body">
+        <strong>Early luteal phase (days 17–22):</strong> Progesterone rises, core temperature lifts ~0.3–0.5°C, RPE climbs at the same workload.
+        Volume holds; intensity is rationalized. Zone 2 dominance, more fat-oxidation work, longer warm-ups,
+        electrolyte priority. Heat tolerance drops — outdoor Z2 runs are scheduled cooler.
+      </p>
+      <p class="coach-body">
+        <strong>Late luteal phase (days 23–28):</strong> If PMS symptoms hit, programming flexes — we will trade a hard threshold session
+        for technical skill work or a longer mobility block. Strength sessions stay, but loads are auto-regulated against bar speed
+        and RPE rather than fixed percentages.
+      </p>
+      <p class="coach-body">
+        <strong>Menstrual phase (days 1–5):</strong> Hormone levels drop, and many athletes actually feel better than expected by day 3.
+        We monitor energy and iron status. Training is not reflexively reduced — it is calibrated to how you feel
+        and what your HRV / RHR data shows that morning.
+      </p>
+    </div>
+
+    <div class="coach-bio reveal">
+      <div class="coach-role" style="margin-bottom:1rem;">What we track</div>
+      <ul class="service-features">
+        <li>Cycle length and phase entry (period-tracker app or basal body temp)</li>
+        <li>Morning HRV + resting heart rate (Whoop / Garmin / Oura)</li>
+        <li>Session RPE and bar-speed (where applicable)</li>
+        <li>Sleep duration + sleep quality scores</li>
+        <li>Symptom log: cramps, bloating, mood, energy</li>
+        <li>Iron / ferritin status (annual, more if running high mileage)</li>
+        <li>Heat tolerance + hydration / electrolyte response</li>
+      </ul>
+      <p class="coach-body" style="margin-top:1.5rem;">
+        <strong>Important caveats.</strong> Cycle-syncing applies to athletes with a natural menstrual cycle.
+        If you are on hormonal contraception (combined pill, hormonal IUD, implant), the hormonal environment is constant —
+        we anchor programming to HRV, sleep, and training load instead.
+        If you have PCOS, endometriosis, are perimenopausal, or have an irregular cycle, the framework still applies —
+        we just use your <em>actual</em> cycle data rather than a textbook 28-day model.
+        And nothing here replaces medical advice from your physician or OB-GYN.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- BOOKING -->
 <section class="section-pad book" id="book">
   <div class="section-head reveal">
     <div>
-      <div class="section-num">05 — BOOK</div>
+      <div class="section-num">06 — BOOK</div>
       <h2 class="section-title">Show up. <span class="italic">Start the work.</span></h2>
     </div>
   </div>
@@ -2308,16 +2775,24 @@
       <div class="form-field">
         <label>What you're interested in</label>
         <select name="interest">
-          <option>Hyrox Full Simulation</option>
-          <option>1-on-1 Coaching — Single Session</option>
-          <option>4-Session Starter (Beginner)</option>
-          <option>10-Session Foundation</option>
-          <option>20-Session Engine</option>
-          <option>30-Session Full (Race Prep)</option>
-          <option>Running Coaching</option>
-          <option>Hybrid S&C</option>
+          <option>Hyrox Full Simulation &mdash; Solo (Open / Pro)</option>
+          <option>Hyrox Full Simulation &mdash; Doubles (team of 2)</option>
+          <option>Hyrox Full Simulation &mdash; Relay (team of 4)</option>
+          <option>4-Session Starter (1-on-1 Hyrox)</option>
+          <option>10-Session Foundation (1-on-1 Hyrox)</option>
+          <option>20-Session Engine (1-on-1 Hyrox)</option>
+          <option>30-Session Full (1-on-1 Hyrox)</option>
+          <option>4-Session Run Starter</option>
+          <option>10-Session Run Foundation</option>
+          <option>20-Session Run Engine</option>
+          <option>30-Session Run Full</option>
+          <option>4-Session S&amp;C Starter</option>
+          <option>10-Session S&amp;C Foundation</option>
+          <option>20-Session S&amp;C Engine</option>
+          <option>30-Session S&amp;C Full</option>
+          <option>Cycle-Centric Training (Female Athletes)</option>
           <option>Lactate Threshold Test</option>
-          <option>Not sure — let's talk</option>
+          <option>Not sure &mdash; let's talk</option>
         </select>
       </div>
       <div class="form-field">
@@ -2436,95 +2911,165 @@
     });
   });
 
-  // ============= PACKAGE SELECTOR =============
-  const SINGLE_RATE = 1500;
+  // ============= PACKAGE SELECTOR (HYROX) =============
+  const SINGLE_RATE = 1800;
   const packages = {
-    single: {
-      name: '— SINGLE SESSION',
-      headline: 'Try the<br/><span class="italic">methodology.</span>',
-      desc: 'For first-time athletes who want to test the coaching fit before committing to a block. One session, full attention, no commitment.',
-      sessions: '1 SESSION',
-      price: '1,500',
-      per: '₱1,500 / session',
-      savings: '— BASE RATE',
-      showSavings: false,
-      showValue: false,
-    },
     starter: {
       name: '— 4-SESSION STARTER',
       headline: 'For the<br/><span class="italic">beginner.</span>',
       desc: 'Designed for first-time athletes. Learn the fundamentals — pacing, breathing, station technique — without committing to a long block. Programming included.',
       sessions: '4 SESSIONS · ~2 WEEKS',
-      price: '6,400',
-      per: '₱1,600 / session',
+      price: '6,800',
+      per: '₱1,700 / session',
       savings: '',
       showSavings: false,
       showValue: true,
       valueLines: [
-        { label: '4 sessions at base rate', value: '₱6,000' },
+        { label: '4 sessions at base rate', value: '₱7,200' },
         { label: 'Personalized 2-week program', value: '₱1,500' },
         { label: 'Onboarding assessment', value: '₱1,000' },
       ],
-      totalValue: '₱8,500',
-      yourPrice: '₱6,400',
-      bargain: '2,100',
+      totalValue: '₱9,700',
+      yourPrice: '₱6,800',
+      bargain: '2,900',
     },
     foundation: {
       name: '— 10-SESSION FOUNDATION',
       headline: 'Build the<br/><span class="italic">foundation.</span>',
       desc: 'A focused block to install the basics — pacing, station technique, threshold zones. Opens and closes with a 60% Hyrox simulation (counted in sessions) to benchmark progress.',
       sessions: '10 SESSIONS · ~5 WEEKS',
-      price: '14,000',
-      per: '₱1,400 / session',
+      price: '15,000',
+      per: '₱1,500 / session',
       savings: '',
       showSavings: false,
       showValue: true,
       valueLines: [
-        { label: '10 sessions at base rate', value: '₱15,000' },
+        { label: '10 sessions at base rate', value: '₱18,000' },
         { label: 'Personalized 5-week program', value: '₱2,500' },
         { label: 'Opening + closing 60% sims', value: 'INCLUDED' },
       ],
-      totalValue: '₱17,500',
-      yourPrice: '₱14,000',
-      bargain: '3,500',
+      totalValue: '₱20,500',
+      yourPrice: '₱15,000',
+      bargain: '5,500',
     },
     engine: {
       name: '— 20-SESSION ENGINE',
       headline: 'Lock in the<br/><span class="italic">engine.</span>',
       desc: 'The block where most athletes break through. Two full cycles, mid-block recovery audit, lactate threshold test included to anchor every zone to your actual physiology.',
       sessions: '20 SESSIONS · ~10 WEEKS',
-      price: '26,000',
-      per: '₱1,300 / session',
+      price: '28,000',
+      per: '₱1,400 / session',
       savings: '',
       showSavings: false,
       showValue: true,
       valueLines: [
-        { label: '20 sessions at base rate', value: '₱30,000' },
-        { label: 'Lactate threshold test', value: '₱2,500' },
+        { label: '20 sessions at base rate', value: '₱36,000' },
+        { label: 'Lactate threshold test', value: '₱4,500' },
         { label: 'Programming + 3 sims included', value: '₱5,000' },
       ],
-      totalValue: '₱37,500',
-      yourPrice: '₱26,000',
-      bargain: '11,500',
+      totalValue: '₱45,500',
+      yourPrice: '₱28,000',
+      bargain: '17,500',
     },
     full: {
       name: '— 30-SESSION FULL',
       headline: 'Crowned at the<br/><span class="italic">start line.</span>',
       desc: 'Full periodized race prep — built around your specific race date. Includes the Hyrox Full Simulation Day, lactate test, race-week taper, and post-race debrief. The most complete program offered.',
       sessions: '30 SESSIONS · 12 WEEKS',
-      price: '36,000',
-      per: '₱1,200 / session',
+      price: '39,000',
+      per: '₱1,300 / session',
       savings: '',
       showSavings: false,
       showValue: true,
       valueLines: [
-        { label: '30 sessions at base rate', value: '₱45,000' },
+        { label: '30 sessions at base rate', value: '₱54,000' },
         { label: 'Hyrox Full Simulation Day', value: '₱3,500' },
-        { label: 'Lactate test + taper + debrief', value: '₱8,000' },
+        { label: 'Lactate test + taper + debrief', value: '₱10,000' },
       ],
-      totalValue: '₱56,500',
-      yourPrice: '₱36,000',
-      bargain: '20,500',
+      totalValue: '₱67,500',
+      yourPrice: '₱39,000',
+      bargain: '28,500',
+    },
+  };
+
+  // ============= PACKAGE SELECTOR (RUNNING) =============
+  const RUN_SINGLE_RATE = 1200;
+  const runPackages = {
+    starter: {
+      name: '— 4-SESSION RUN STARTER',
+      headline: 'Start with<br/><span class="italic">structure.</span>',
+      desc: 'For new runners or returning athletes. Gait audit, cadence work, polarized 80/20 weekly plan, and a 2-week structured block of run sessions.',
+      sessions: '4 SESSIONS · ~2 WEEKS',
+      price: '4,400',
+      per: '₱1,100 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '4 sessions at base rate', value: '₱4,800' },
+        { label: 'Gait + cadence video analysis', value: '₱1,200' },
+        { label: 'Personalized 2-week run plan', value: '₱1,000' },
+      ],
+      totalValue: '₱7,000',
+      yourPrice: '₱4,400',
+      bargain: '2,600',
+    },
+    foundation: {
+      name: '— 10-SESSION RUN FOUNDATION',
+      headline: 'Build the<br/><span class="italic">aerobic base.</span>',
+      desc: 'A 5-week block that installs the aerobic engine — Zone 2 dominance, threshold calibration, and a benchmark time trial at open and close of the block.',
+      sessions: '10 SESSIONS · ~5 WEEKS',
+      price: '10,500',
+      per: '₱1,050 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '10 sessions at base rate', value: '₱12,000' },
+        { label: 'Personalized 5-week run plan', value: '₱2,000' },
+        { label: 'Opening + closing time trials', value: 'INCLUDED' },
+      ],
+      totalValue: '₱14,000',
+      yourPrice: '₱10,500',
+      bargain: '3,500',
+    },
+    engine: {
+      name: '— 20-SESSION RUN ENGINE',
+      headline: 'Lock in the<br/><span class="italic">run engine.</span>',
+      desc: 'The breakthrough block. Lactate threshold test included, two mesocycles with mid-block recovery audit, and threshold + VO₂ work introduced precisely — never guessed.',
+      sessions: '20 SESSIONS · ~10 WEEKS',
+      price: '20,000',
+      per: '₱1,000 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '20 sessions at base rate', value: '₱24,000' },
+        { label: 'Lactate threshold test', value: '₱4,500' },
+        { label: 'Programming + 2 race tune-ups', value: '₱4,000' },
+      ],
+      totalValue: '₱32,500',
+      yourPrice: '₱20,000',
+      bargain: '12,500',
+    },
+    full: {
+      name: '— 30-SESSION RUN FULL',
+      headline: 'Crowned at the<br/><span class="italic">finish line.</span>',
+      desc: 'Full periodized race prep for half-marathon, marathon, or trail goal race — built around your race date. Lactate test, race-week taper, pacing plan, and post-race debrief.',
+      sessions: '30 SESSIONS · 12 WEEKS',
+      price: '27,000',
+      per: '₱900 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '30 sessions at base rate', value: '₱36,000' },
+        { label: 'Lactate test + race-week taper', value: '₱6,500' },
+        { label: 'Goal-race pacing plan + debrief', value: '₱4,000' },
+      ],
+      totalValue: '₱46,500',
+      yourPrice: '₱27,000',
+      bargain: '19,500',
     },
   };
 
@@ -2539,9 +3084,10 @@
     el.innerHTML = `<span>${line.label}</span><span class="val">${line.value}</span>`;
   }
 
-  document.querySelectorAll('.pkg-tab').forEach(tab => {
+  document.querySelectorAll('[data-pkg]').forEach(tab => {
     tab.addEventListener('click', () => {
-      document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+      // Only deactivate sibling Hyrox tabs (not run tabs)
+      tab.parentElement.querySelectorAll('[data-pkg]').forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const data = packages[tab.dataset.pkg];
 
@@ -2554,7 +3100,9 @@
         document.getElementById('pkgDesc').textContent = data.desc;
         document.getElementById('pkgSessions').textContent = data.sessions;
         document.getElementById('pkgPrice').textContent = data.price;
-        document.getElementById('pkgPer').textContent = data.per;
+        // Split per-session string: e.g. "₱1,700 / session" -> "₱1,700" + "/ session"
+        const perParts = data.per.split(' / ');
+        document.getElementById('pkgPer').innerHTML = perParts[0] + (perParts[1] ? '<span class="per-suffix">/ ' + perParts[1] + '</span>' : '');
 
         const sav = document.getElementById('pkgSavings');
         sav.textContent = data.savings;
@@ -2575,6 +3123,190 @@
 
         pkgContent.classList.remove('swap');
         pkgPriceSide.classList.remove('swap');
+      }, 250);
+    });
+  });
+
+  // ============= RUN PACKAGE SELECTOR =============
+  const runPkgContent = document.getElementById('runPkgContent');
+  const runPkgPriceSide = document.getElementById('runPkgPriceSide');
+  const runPkgValueStack = document.getElementById('runPkgValueStack');
+
+  function renderRunValueLine(idx, line) {
+    const el = document.getElementById('runPkgValueLine' + idx);
+    if (!el || !line) { if (el) el.style.display = 'none'; return; }
+    el.style.display = 'flex';
+    el.innerHTML = `<span>${line.label}</span><span class="val">${line.value}</span>`;
+  }
+
+  document.querySelectorAll('[data-runpkg]').forEach(tab => {
+    tab.addEventListener('click', () => {
+      tab.parentElement.querySelectorAll('[data-runpkg]').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const data = runPackages[tab.dataset.runpkg];
+
+      runPkgContent.classList.add('swap');
+      runPkgPriceSide.classList.add('swap');
+
+      setTimeout(() => {
+        document.getElementById('runPkgName').textContent = data.name;
+        document.getElementById('runPkgHeadline').innerHTML = data.headline;
+        document.getElementById('runPkgDesc').textContent = data.desc;
+        document.getElementById('runPkgSessions').textContent = data.sessions;
+        document.getElementById('runPkgPrice').textContent = data.price;
+        const runPerParts = data.per.split(' / ');
+        document.getElementById('runPkgPer').innerHTML = runPerParts[0] + (runPerParts[1] ? '<span class="per-suffix">/ ' + runPerParts[1] + '</span>' : '');
+
+        const sav = document.getElementById('runPkgSavings');
+        sav.textContent = data.savings;
+        sav.style.visibility = data.showSavings ? 'visible' : 'hidden';
+
+        if (data.showValue && data.valueLines) {
+          runPkgValueStack.style.display = 'block';
+          renderRunValueLine(1, data.valueLines[0]);
+          renderRunValueLine(2, data.valueLines[1]);
+          renderRunValueLine(3, data.valueLines[2]);
+          document.getElementById('runPkgValueTotal').textContent = data.totalValue;
+          document.getElementById('runPkgValuePrice').textContent = data.yourPrice;
+          document.getElementById('runPkgBargainAmount').textContent = data.bargain;
+        } else {
+          runPkgValueStack.style.display = 'none';
+        }
+
+        runPkgContent.classList.remove('swap');
+        runPkgPriceSide.classList.remove('swap');
+      }, 250);
+    });
+  });
+
+
+  // ============= PACKAGE SELECTOR (S&C) =============
+  const scPackages = {
+    starter: {
+      name: '\u2014 4-SESSION S&C STARTER',
+      headline: 'Start with the<br/><span class="italic">movement.</span>',
+      desc: 'Movement screen, primary-lift technique work, and a 2-week S&C block. For athletes new to structured strength training, or returning after a layoff.',
+      sessions: '4 SESSIONS \u00b7 ~2 WEEKS',
+      price: '6,800',
+      per: '\u20b11,700 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '4 sessions at base rate', value: '\u20b17,200' },
+        { label: 'Movement screen + lift technique audit', value: '\u20b11,500' },
+        { label: 'Personalized 2-week program', value: '\u20b11,000' },
+      ],
+      totalValue: '\u20b19,700',
+      yourPrice: '\u20b16,800',
+      bargain: '2,900',
+    },
+    foundation: {
+      name: '\u2014 10-SESSION S&C FOUNDATION',
+      headline: 'Build the<br/><span class="italic">base.</span>',
+      desc: 'A focused 5-week block. GPP, primary strength (squat / hinge / press / pull), aerobic engine building, and accessory work for individual weak links.',
+      sessions: '10 SESSIONS \u00b7 ~5 WEEKS',
+      price: '15,000',
+      per: '\u20b11,500 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '10 sessions at base rate', value: '\u20b118,000' },
+        { label: 'Personalized 5-week program', value: '\u20b12,500' },
+        { label: 'Mid-block movement re-check', value: 'INCLUDED' },
+      ],
+      totalValue: '\u20b120,500',
+      yourPrice: '\u20b115,000',
+      bargain: '5,500',
+    },
+    engine: {
+      name: '\u2014 20-SESSION S&C ENGINE',
+      headline: 'Lock in the<br/><span class="italic">engine.</span>',
+      desc: 'Two mesocycles. Applied strength under fatigue, race-specific conditioning, lactate threshold test included to anchor zones, and mid-block recovery audit.',
+      sessions: '20 SESSIONS \u00b7 ~10 WEEKS',
+      price: '28,000',
+      per: '\u20b11,400 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '20 sessions at base rate', value: '\u20b136,000' },
+        { label: 'Lactate threshold test', value: '\u20b14,500' },
+        { label: 'Programming + accessories', value: '\u20b15,000' },
+      ],
+      totalValue: '\u20b145,500',
+      yourPrice: '\u20b128,000',
+      bargain: '17,500',
+    },
+    full: {
+      name: '\u2014 30-SESSION S&C FULL',
+      headline: 'Crowned at the<br/><span class="italic">peak.</span>',
+      desc: 'Full periodized race prep built around your Hyrox or DEKA calendar. Three mesocycles, peak strength block, lactate test, race-week taper, and post-race debrief.',
+      sessions: '30 SESSIONS \u00b7 12 WEEKS',
+      price: '39,000',
+      per: '\u20b11,300 / session',
+      savings: '',
+      showSavings: false,
+      showValue: true,
+      valueLines: [
+        { label: '30 sessions at base rate', value: '\u20b154,000' },
+        { label: 'Lactate test + race-week taper', value: '\u20b16,500' },
+        { label: 'Programming + Hyrox-specific peaking', value: '\u20b17,000' },
+      ],
+      totalValue: '\u20b167,500',
+      yourPrice: '\u20b139,000',
+      bargain: '28,500',
+    },
+  };
+
+  const scPkgContent = document.getElementById('scPkgContent');
+  const scPkgPriceSide = document.getElementById('scPkgPriceSide');
+  const scPkgValueStack = document.getElementById('scPkgValueStack');
+
+  function renderScValueLine(idx, line) {
+    const el = document.getElementById('scPkgValueLine' + idx);
+    if (!el || !line) { if (el) el.style.display = 'none'; return; }
+    el.style.display = 'flex';
+    el.innerHTML = `<span>${line.label}</span><span class="val">${line.value}</span>`;
+  }
+
+  document.querySelectorAll('[data-scpkg]').forEach(tab => {
+    tab.addEventListener('click', () => {
+      tab.parentElement.querySelectorAll('[data-scpkg]').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const data = scPackages[tab.dataset.scpkg];
+
+      scPkgContent.classList.add('swap');
+      scPkgPriceSide.classList.add('swap');
+
+      setTimeout(() => {
+        document.getElementById('scPkgName').textContent = data.name;
+        document.getElementById('scPkgHeadline').innerHTML = data.headline;
+        document.getElementById('scPkgDesc').textContent = data.desc;
+        document.getElementById('scPkgSessions').textContent = data.sessions;
+        document.getElementById('scPkgPrice').textContent = data.price;
+        const scPerParts = data.per.split(' / ');
+        document.getElementById('scPkgPer').innerHTML = scPerParts[0] + (scPerParts[1] ? '<span class="per-suffix">/ ' + scPerParts[1] + '</span>' : '');
+
+        const sav = document.getElementById('scPkgSavings');
+        sav.textContent = data.savings;
+        sav.style.visibility = data.showSavings ? 'visible' : 'hidden';
+
+        if (data.showValue && data.valueLines) {
+          scPkgValueStack.style.display = 'block';
+          renderScValueLine(1, data.valueLines[0]);
+          renderScValueLine(2, data.valueLines[1]);
+          renderScValueLine(3, data.valueLines[2]);
+          document.getElementById('scPkgValueTotal').textContent = data.totalValue;
+          document.getElementById('scPkgValuePrice').textContent = data.yourPrice;
+          document.getElementById('scPkgBargainAmount').textContent = data.bargain;
+        } else {
+          scPkgValueStack.style.display = 'none';
+        }
+
+        scPkgContent.classList.remove('swap');
+        scPkgPriceSide.classList.remove('swap');
       }, 250);
     });
   });
