@@ -1847,6 +1847,63 @@
     font-weight: 600;
   }
 
+
+  /* ===================== SERVICE CARD PRICE (matches package format) ===================== */
+  .service-price {
+    text-align: right;
+  }
+  .svc-per {
+    font-family: var(--f-display);
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    line-height: 1;
+    color: var(--text);
+    letter-spacing: -0.015em;
+    white-space: nowrap;
+    margin-bottom: 0.35rem;
+  }
+  .svc-per .currency {
+    font-size: 0.55em;
+    color: var(--green);
+    margin-right: 0.08em;
+    vertical-align: top;
+    line-height: 1.2;
+  }
+  .svc-per .per-suffix {
+    font-family: var(--f-serif);
+    font-style: italic;
+    color: var(--green);
+    font-size: 0.36em;
+    letter-spacing: 0.04em;
+    margin-left: 0.35em;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  .svc-total {
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    line-height: 1.4;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .svc-total .total-label {
+    color: var(--text-faint);
+    margin-right: 0.4em;
+  }
+  .svc-total .currency {
+    color: var(--green);
+    margin-right: 0.05em;
+  }
+  .svc-total .pkg-strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  @media (max-width: 900px) {
+    .svc-per { font-size: 1.4rem; }
+    .svc-total { font-size: 0.58rem; letter-spacing: 0.14em; }
+  }
+
 </style>
 </head>
 <body>
@@ -2187,7 +2244,10 @@
       <div class="service-head">
         <div class="service-no">— 01 —</div>
         <div class="service-title">Hyrox <span class="italic">Full Simulation</span></div>
-        <div class="service-price"><span class="currency">₱</span>1,500&ndash;3,500<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ person</span></div>
+        <div class="service-price">
+          <div class="svc-per">From <span class="currency">&#8369;</span>1,500<span class="per-suffix">/ person</span></div>
+          <div class="svc-total"><span class="total-label">Solo</span><span class="currency">&#8369;</span><span class="pkg-strong">3,500</span> &middot; <span class="total-label">Doubles</span><span class="currency">&#8369;</span><span class="pkg-strong">2,500</span> &middot; <span class="total-label">Relay</span><span class="currency">&#8369;</span><span class="pkg-strong">1,500</span></div>
+        </div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2263,7 +2323,10 @@
       <div class="service-head">
         <div class="service-no">— 02 —</div>
         <div class="service-title">1-on-1 <span class="italic">Performance Coaching</span></div>
-        <div class="service-price">From <span class="currency">₱</span>6,800<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ 4-session block</span></div>
+        <div class="service-price">
+          <div class="svc-per">From <span class="currency">&#8369;</span>1,700<span class="per-suffix">/ session</span></div>
+          <div class="svc-total"><span class="total-label">From</span><span class="currency">&#8369;</span><span class="pkg-strong">6,800</span> &middot; 4-session block</div>
+        </div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2301,7 +2364,10 @@
       <div class="service-head">
         <div class="service-no">— 03 —</div>
         <div class="service-title">Running <span class="italic">Coaching</span></div>
-        <div class="service-price">From <span class="currency">₱</span>4,400<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ 4-session block</span></div>
+        <div class="service-price">
+          <div class="svc-per">From <span class="currency">&#8369;</span>1,100<span class="per-suffix">/ session</span></div>
+          <div class="svc-total"><span class="total-label">From</span><span class="currency">&#8369;</span><span class="pkg-strong">4,400</span> &middot; 4-session block</div>
+        </div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2338,7 +2404,10 @@
       <div class="service-head">
         <div class="service-no">— 04 —</div>
         <div class="service-title">Hybrid <span class="italic">Strength & Conditioning</span></div>
-        <div class="service-price">From <span class="currency">₱</span>6,800<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ 4-session block</span></div>
+        <div class="service-price">
+          <div class="svc-per">From <span class="currency">&#8369;</span>1,700<span class="per-suffix">/ session</span></div>
+          <div class="svc-total"><span class="total-label">From</span><span class="currency">&#8369;</span><span class="pkg-strong">6,800</span> &middot; 4-session block</div>
+        </div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
@@ -2378,7 +2447,10 @@
       <div class="service-head">
         <div class="service-no">— 05 —</div>
         <div class="service-title">Lactate <span class="italic">Threshold Testing</span></div>
-        <div class="service-price"><span class="currency">₱</span>4,500<span style="font-size:0.55em; color:var(--text-faint); margin-left:0.4em;">/ person</span></div>
+        <div class="service-price">
+          <div class="svc-per"><span class="currency">&#8369;</span>4,500<span class="per-suffix">/ person</span></div>
+          <div class="svc-total"><span class="total-label">One-off test</span> &middot; re-test every 8&ndash;12 wks</div>
+        </div>
         <div class="service-arrow">+</div>
       </div>
       <div class="service-body">
